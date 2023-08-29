@@ -1,0 +1,8 @@
+# Ignorar la carpeta específica y sus contenidos
+.angular/cache/16.2.0/angular-webpack/
+.angular/cache/16.2.0/angular-webpack/a036c89d09bdff88982d36bce5f28f29262cba26/0.pack
+.angular/cache/16.2.0/angular-webpack/3c4d33d40480252c8c471f69ccfb38fdaf8d4b8e/5.pack
+.angular/cache/16.2.0/angular-webpack/13a023f5776fcc53fb0d8e096693d018bf1226ee/1.pack
+.angular/cache/16.2.0/angular-webpack/2e82f352cc6eb5622efca5f4f6010ea124c2ceb2/12.pack
+.angular/cache/16.2.0/angular-webpack/35829e42932c20c5c8d96295ffd77b40ea541bd2/9.pack
+.angular/cache/16.2.0/angular-webpack/434e0bb41a313b4359352e1348bd6488b28f6e77/0.pack

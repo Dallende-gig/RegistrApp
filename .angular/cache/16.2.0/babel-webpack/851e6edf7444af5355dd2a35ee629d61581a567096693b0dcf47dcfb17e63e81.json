@@ -1,0 +1,1 @@
+{"ast":null,"code":"\"use strict\";","map":{"version":3,"names":[],"sources":["D:\\Practica movil\\Angular\\Proyecto semestral\\RegistrAPP\\src\\app\\home\\home.page.ts"],"sourcesContent":["\n@Component({\n  selector: 'app-home',\n  templateUrl: 'home.page.html',\n  styleUrls: ['home.page.scss'],\n})"],"mappings":""},"metadata":{},"sourceType":"script","externalDependencies":[]}

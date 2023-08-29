@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <ion-img src="../../assets/Screenshot 2023-08-16 210220.png"/>
+    <ion-item>
+      <ion-label position="floating">Usuario</ion-label>
+      <ion-input name="User" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input name="Pass" type="password"></ion-input>
+    </ion-item>
+    <ion-button (click)="validarYLogin()">Login</ion-button>
+    <a (click)="navigateToMenu()">Restablecer Contraseña</a> 
+  </div>
+</ion-content>

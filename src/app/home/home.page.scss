@@ -1,0 +1,21 @@
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+ion-input{
+  width: 40%;
+}
+
+a{
+  cursor: pointer;
+}
+
+ion-img{
+  width: auto;
+  height: 15%;
+  padding-bottom: 10px;
+}
