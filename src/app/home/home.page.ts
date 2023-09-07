@@ -4,12 +4,23 @@ import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { SharedService } from '../../services/shared.service'; // Reemplaza esto con la ruta correcta
 
+interface Credenciales {
+  [usuario: string]: string;
+}
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+
+  private credenciales: Credenciales = {
+    diego: '12345',
+    cam: '123456',
+    admin: 'admin1234'
+  };
+
   constructor(
     private router: Router,
     private http: HttpClient,
@@ -27,9 +38,12 @@ export class HomePage {
   }
 
   async validarYLogin() {
-    const usuario = (document.querySelector('input[name="User"]') as HTMLInputElement).value;
-    const contrasena = (document.querySelector('input[name="Pass"]') as HTMLInputElement).value;
-  
+    const usuarioInput = (document.querySelector('input[name="User"]') as HTMLInputElement);
+    const contrasenaInput = (document.querySelector('input[name="Pass"]') as HTMLInputElement);
+
+    const usuario = usuarioInput.value;
+    const contrasena = contrasenaInput.value;
+
     if (!usuario || !contrasena) {
       const toast = await this.toastController.create({
         message: 'Los campos no pueden estar vacíos.',
@@ -39,24 +53,21 @@ export class HomePage {
       toast.present();
       return;
     }
-  
-    const apiUrl = 'http://192.168.1.88:3000/api/login';
-  
-    this.http.post(apiUrl, { usuario, contrasena }).subscribe(
-      (response: any) => {
-        if (response.message === 'Inicio de sesión exitoso') {
-          this.mostrarMensaje('Credenciales Validas');
-          this.sharedService.setUsername(usuario); // Almacena el nombre de usuario en SharedService
-          this.router.navigate(['/menu']);
-        } else {
-          this.mostrarMensaje('Credenciales inválidas');
-        }
-      },
-      (error) => {
-        console.error('Error en la solicitud:', error);
-        this.mostrarMensaje('Credenciales Invalidas');
-      }
-    );
+
+    // Verifica si las credenciales coinciden con el diccionario
+    if (this.credenciales.hasOwnProperty(usuario) && this.credenciales[usuario] === contrasena) {
+      // Las credenciales son válidas, redirige a la página /menu
+      this.sharedService.setUsername(usuario);
+      this.router.navigate(['/menu']);
+    } else {
+      // Las credenciales son incorrectas, muestra un mensaje de error
+      const toast = await this.toastController.create({
+        message: 'Usuario o contraseña incorrectos.',
+        duration: 2000,
+        position: 'top'
+      });
+      toast.present();
+    }
   }
 
   navigateToMenu() {
