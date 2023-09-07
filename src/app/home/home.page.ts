@@ -39,6 +39,7 @@ export class HomePage {
     const usuario = (document.querySelector('input[name="User"]') as HTMLInputElement).value;
     const contrasena = (document.querySelector('input[name="Pass"]') as HTMLInputElement).value;
 
+
     if (!usuario || !contrasena) {
       const toast = await this.toastController.create({
         message: 'Los campos no pueden estar vacíos.',
@@ -68,4 +69,9 @@ export class HomePage {
   navigateToMenu() {
     this.router.navigate(['/menu']); // Navigate to the "Menu" page
   }
+
+  navigateToForgot() {
+    this.router.navigate(['/forgot-password']); // Navigate to the "Forgot" page
+  }
+
 }
