@@ -1,6 +1,23 @@
+*{
+  --background: aliceblue;
+}
+#Header{
+  text-align: center;
+  box-shadow: none;
+}
 ion-toolbar{
-  --background: #a4c4f3;
+  --background: transparent;
   color: #000;
+}
+
+.circle {
+  width: 400px;
+  height: 400px;
+  background-color: #3498db;
+  position: absolute;
+  top: -224px;
+  left: -179px;
+  transform: rotate(50deg);
 }
 
 #container {
@@ -9,7 +26,7 @@ ion-toolbar{
   justify-content: center;
   align-items: center;
   height: 100%;
-  background-color: #ffffff;
+  background-color: transparent;
   animation: 2.5s cubic-bezier(.25, 1, .30, 1) circle-in-center both;
 }
 
@@ -21,6 +38,7 @@ ion-input{
 ion-item{
   border-radius: 50px;
   margin-bottom: 1%;
+  --background: #000;
 }
 
 a{
@@ -33,6 +51,9 @@ ion-img{
   padding-bottom: 10px;
 }
 
+ion-button{
+  --background:#000;
+}
 
 // Animaciones //
 

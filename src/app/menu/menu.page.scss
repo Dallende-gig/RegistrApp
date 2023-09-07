@@ -1,15 +1,22 @@
+*{
+  --background:aliceblue;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+#main-content{
+  --background:transparent;
+}
 ion-list {
   ion-item {
-    padding: 10px;
+    --background:aliceblue;
     ion-label {
       margin-left: 10px;
+      --background:transparent;
     }
   }
 }
 
-#Body{
-  animation: 2.5s cubic-bezier(.25, 1, .30, 1) wipe-in-left both;
-}
 
 #username{
   color:aliceblue;
