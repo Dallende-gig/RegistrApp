@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { SharedService } from '../../services/shared.service'; // Reemplaza esto con la ruta correcta
@@ -23,7 +22,6 @@ export class HomePage {
 
   constructor(
     private router: Router,
-    private http: HttpClient,
     public toastController: ToastController,
     private sharedService: SharedService // Inyecta el SharedService
   ) {}

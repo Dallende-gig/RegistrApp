@@ -14,9 +14,14 @@ interface MenuItem {
   templateUrl: 'menu.page.html',
   styleUrls: ['menu.page.scss'],
 })
+
+// Declaraciones para las opciones del menu //
 export class MenuPage implements OnInit {
   username: string | null = null;
+  title: string | null = null;
+  
   menuItems: MenuItem[] = [
+    { label: 'Inicio', icon: 'Home', destination: 'menu' },
     { label: 'Cuenta', icon: 'person', destination: 'cuenta' },
     { label: 'Perfil', icon: 'person-circle', destination: 'perfil' },
     { label: 'Asignaturas', icon: 'book', destination: 'asignaturas' },
@@ -29,18 +34,22 @@ export class MenuPage implements OnInit {
     private menuController: MenuController
   ) {}
 
+  //Obtencion de Nombre de usuario para mostrar en el mensaje de bienvenida //
   ngOnInit() {
     this.username = this.sharedService.getUsername();
+    this.title = this.sharedService.getTitlePage();
   }
 
+  //Manejo de direcciones a traves de irA //
   irA(destino: string) {
-    if (destino === 'cuenta' || destino === 'perfil') {
-      this.router.navigate([`/menu/${destino}`]); // Ruta a través de "menu"
-  } else {
-    this.router.navigate([`/menu/${destino}`]); 
+    if (destino === 'cuenta' || destino === 'perfil' || destino === 'asignaturas') {
+      this.router.navigate([`/menu/${destino}`]);
+  } if( destino === 'menu') {
+      this.router.navigate([`/menu`]);
     }
   }
 
+  // Funcion para cerrar el menu //
   cerrarMenu() {
     this.menuController.close();
   }
