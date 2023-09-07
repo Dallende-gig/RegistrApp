@@ -1,13 +1,26 @@
+ion-toolbar{
+  --background: #a4c4f3;
+  color: #000;
+}
+
 #container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
+  background-color: #ffffff;
+  animation: 2.5s cubic-bezier(.25, 1, .30, 1) circle-in-center both;
 }
 
 ion-input{
-  width: 40%;
+  width: 100%;
+  --background:transparent;
+}
+
+ion-item{
+  border-radius: 50px;
+  margin-bottom: 1%;
 }
 
 a{
@@ -18,4 +31,16 @@ ion-img{
   width: auto;
   height: 15%;
   padding-bottom: 10px;
+}
+
+
+// Animaciones //
+
+@keyframes circle-in-center {
+  from {
+    clip-path: circle(0%);
+  }
+  to {
+    clip-path: circle(125%);
+  }
 }

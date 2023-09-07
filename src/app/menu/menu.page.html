@@ -1,12 +1,9 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar id="username">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Menú</ion-title>
-  </ion-toolbar>
-  <ion-toolbar id="username">
-    <ion-label>Bienvenido, {{ username }}</ion-label>
+    <ion-label>Bienvenido {{ username }}</ion-label>
   </ion-toolbar>
 </ion-header>
 
@@ -14,7 +11,7 @@
   <ion-header>
     <ion-toolbar>
       <ion-icon (click)="cerrarMenu()" slot="start" name="arrow-back" id="arrow-back"></ion-icon>
-      <ion-title>Menú</ion-title>
+      <ion-label>title</ion-label>
     </ion-toolbar>
   </ion-header>
 
@@ -29,5 +26,9 @@
     </ion-list>
   </ion-content>
 </ion-menu>
+
+<ion-content id="Body">
+  <a>Esta es la pagina principal</a>
+</ion-content>
 
 <ion-router-outlet id="main-content"></ion-router-outlet>
