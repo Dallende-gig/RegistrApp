@@ -38,11 +38,9 @@ export class HomePage {
   }
 
   async validarYLogin() {
-    const usuarioInput = (document.querySelector('input[name="User"]') as HTMLInputElement);
-    const contrasenaInput = (document.querySelector('input[name="Pass"]') as HTMLInputElement);
+    const usuario = (document.querySelector('input[name="User"]') as HTMLInputElement).value;
+    const contrasena = (document.querySelector('input[name="Pass"]') as HTMLInputElement).value;
 
-    const usuario = usuarioInput.value;
-    const contrasena = contrasenaInput.value;
 
     if (!usuario || !contrasena) {
       const toast = await this.toastController.create({
@@ -73,4 +71,9 @@ export class HomePage {
   navigateToMenu() {
     this.router.navigate(['/menu']); // Navigate to the "Menu" page
   }
+
+  navigateToForgot() {
+    this.router.navigate(['/forgot-password']); // Navigate to the "Forgot" page
+  }
+
 }

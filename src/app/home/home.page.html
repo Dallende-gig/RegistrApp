@@ -8,7 +8,7 @@
   <div id="container">
     <ion-img src="../../assets/Screenshot 2023-08-16 210220.png"/>
     <ion-item>
-      <ion-label position="floating">Usuario</ion-label>
+      <ion-label position="floating" type="email">Email</ion-label>
       <ion-input name="User" type="text"></ion-input>
     </ion-item>
     <ion-item>
@@ -16,6 +16,6 @@
       <ion-input name="Pass" type="password"></ion-input>
     </ion-item>
     <ion-button (click)="validarYLogin()">Login</ion-button>
-    <a (click)="navigateToMenu()">Restablecer Contraseña</a> 
+    <a (click)="navigateToForgot()">Restablecer Contraseña</a> 
   </div>
 </ion-content>
