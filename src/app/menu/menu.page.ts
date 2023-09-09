@@ -18,8 +18,6 @@ interface MenuItem {
 // Declaraciones para las opciones del menu //
 export class MenuPage implements OnInit {
   username: string | null = null;
-  title: string | null = null;
-  
   menuItems: MenuItem[] = [
     { label: 'Inicio', icon: 'Home', destination: 'menu' },
     { label: 'Cuenta', icon: 'person', destination: 'cuenta' },
@@ -37,7 +35,6 @@ export class MenuPage implements OnInit {
   //Obtencion de Nombre de usuario para mostrar en el mensaje de bienvenida //
   ngOnInit() {
     this.username = this.sharedService.getUsername();
-    this.title = this.sharedService.getTitlePage();
   }
 
   //Manejo de direcciones a traves de irA //
