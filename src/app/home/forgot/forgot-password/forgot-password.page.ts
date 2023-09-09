@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forgot-password',
@@ -8,7 +9,9 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class ForgotPasswordPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   email: string = ''; // Variable para almacenar el valor del campo de correo electrónico
   isValidEmail(email: string): boolean {
@@ -23,4 +26,7 @@ export class ForgotPasswordPage implements OnInit {
   ngOnInit() {
   }
 
+  navigateToHome() {
+    this.router.navigate(['/home']); // Navigate to the "Forgot" page
+  }
 }

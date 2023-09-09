@@ -20,8 +20,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     FormsModule,
     IonicModule,
     ForgotPasswordPageRoutingModule,
-    MatInputModule,
-    MatFormFieldModule,
   ],
   declarations: [ForgotPasswordPage]
 })
