@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { SharedService } from '../../services/shared.service'; // Reemplaza esto con la ruta correcta
-
-interface Credenciales {
-  [usuario: string]: string;
-}
+import { SharedService } from '../../services/shared.service';
+import { SQLite, SQLiteObject} from '@awesome-cordova-plugins/sqlite/ngx';
 
 @Component({
   selector: 'app-home',
@@ -14,16 +11,11 @@ interface Credenciales {
 })
 export class HomePage {
 
-  private credenciales: Credenciales = {
-    diego: '12345',
-    cam: '123456',
-    admin: 'admin1234'
-  };
-
   constructor(
     private router: Router,
     public toastController: ToastController,
-    private sharedService: SharedService // Inyecta el SharedService
+    private sharedService: SharedService,
+    private sqlite: SQLite
   ) {}
   
   async mostrarMensaje(mensaje: string) {
@@ -39,32 +31,55 @@ export class HomePage {
     const usuario = (document.querySelector('input[name="User"]') as HTMLInputElement).value;
     const contrasena = (document.querySelector('input[name="Pass"]') as HTMLInputElement).value;
 
-
     if (!usuario || !contrasena) {
-      const toast = await this.toastController.create({
-        message: 'Los campos no pueden estar vacíos.',
-        duration: 2000,
-        position: 'top'
-      });
-      toast.present();
+      this.mostrarMensaje('Los campos no pueden estar vacíos.');
       return;
     }
 
-    // Verifica si las credenciales coinciden con el diccionario
-    if (this.credenciales.hasOwnProperty(usuario) && this.credenciales[usuario] === contrasena) {
-      // Las credenciales son válidas, redirige a la página /menu
-      this.sharedService.setUsername(usuario);
-      this.router.navigate(['/menu']);
-    } else {
-      // Las credenciales son incorrectas, muestra un mensaje de error
-      const toast = await this.toastController.create({
-        message: 'Usuario o contraseña incorrectos.',
-        duration: 2000,
-        position: 'top'
-      });
-      toast.present();
-    }
+    this.sqlite.create({
+      name: 'usuarios.db',
+      location: 'default'
+    })
+    .then((db: SQLiteObject) => {
+      db.executeSql('SELECT * FROM credenciales WHERE usuario = ? AND contrasena = ?', [usuario, contrasena])
+        .then(data => {
+          if (data.rows.length > 0) {
+            // Las credenciales son válidas, redirige a la página /menu
+            this.sharedService.setUsername(usuario);
+            this.router.navigate(['/menu']);
+          } else {
+            // Las credenciales son incorrectas, muestra un mensaje de error
+            this.mostrarMensaje('Usuario o contraseña incorrectos.');
+          }
+        })
+        .catch(error => {
+          console.error('Error al ejecutar consulta en SQLite', error);
+          this.mostrarMensaje('Error al verificar las credenciales.');
+        });
+    })
+    .catch(error => {
+      console.error('Error al abrir la base de datos SQLite', error);
+      this.mostrarMensaje('Error al abrir la base de datos.');
+    });
   }
+
+
+  agregarCredencial(usuario: string, contrasena: string) {
+    this.sqlite.create({
+      name: 'credenciales.db',
+      location: 'default'
+    })
+    .then((db: SQLiteObject) => {
+      db.executeSql('INSERT INTO credenciales (usuario, contrasena) VALUES (?, ?)', [usuario, contrasena])
+        .then(() => {
+          console.log('Credencial agregada con éxito.');
+          // Puedes mostrar un mensaje de éxito o realizar otras acciones aquí
+        })
+        .catch(error => console.error('Error al agregar la credencial', error));
+    })
+    .catch(error => console.error('Error al abrir la base de datos SQLite', error));
+  }
+
 
   navigateToMenu() {
     this.router.navigate(['/menu']); // Navigate to the "Menu" page
