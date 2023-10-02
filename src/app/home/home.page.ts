@@ -64,22 +64,7 @@ export class HomePage {
   }
 
 
-  agregarCredencial(usuario: string, contrasena: string) {
-    this.sqlite.create({
-      name: 'credenciales.db',
-      location: 'default'
-    })
-    .then((db: SQLiteObject) => {
-      db.executeSql('INSERT INTO credenciales (usuario, contrasena) VALUES (?, ?)', [usuario, contrasena])
-        .then(() => {
-          console.log('Credencial agregada con éxito.');
-          // Puedes mostrar un mensaje de éxito o realizar otras acciones aquí
-        })
-        .catch(error => console.error('Error al agregar la credencial', error));
-    })
-    .catch(error => console.error('Error al abrir la base de datos SQLite', error));
-  }
-
+  
 
   navigateToMenu() {
     this.router.navigate(['/menu']); // Navigate to the "Menu" page
