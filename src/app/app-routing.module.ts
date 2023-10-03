@@ -8,10 +8,11 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule) },
   { path: 'menu', loadChildren: () => import('./menu/menu.module').then(m => m.MenuPageModule) },
-  {
-    path: 'forgot-password',
-    loadChildren: () => import('./home/forgot/forgot-password.module').then( m => m.ForgotPasswordPageModule)
+  { path: 'menu-profesor', loadChildren: () => import('./menu-profesor/menu-profesor.module').then( m => m.MenuProfesorPageModule)
   },
+  { path: 'forgot-password',loadChildren: () => import('./home/forgot/forgot-password.module').then( m => m.ForgotPasswordPageModule)
+  },
+  /* Componentes */
   {
     path: 'perfil',
     component: PerfilComponent
@@ -24,6 +25,11 @@ const routes: Routes = [
     path: 'asignaturas',
     component: AsignaturasComponent
   },
+  /* Not Found */
+  {
+    path: '**', 
+    redirectTo: 'not-found',
+  }
 ];
 
 

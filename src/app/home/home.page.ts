@@ -12,19 +12,13 @@ import { SegmentChangeEventDetail } from '@ionic/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  segmentValue:  string = 'nivel 1';
 
-  segmentValue: string = 'nivel 1';
 
   segmentChanged() {
     // Puedes realizar acciones adicionales aquí según el segmento seleccionado.
-    console.log('Segment changed to:', this.segmentValue);
-
     // Redirige al usuario según la selección del toggle
-    if (this.segmentValue === 'nivel 1') {
-      this.router.navigate(['/menuProfesor']);
-    } else {
-      this.router.navigate(['/menuAlumno']);
-    }
+
   }
   constructor(
     private router: Router,
@@ -48,11 +42,10 @@ export class HomePage {
 
     if (!usuario || !contrasena) {
       this.mostrarMensaje('Los campos no pueden estar vacíos.');
-      this.mostrarMensaje('No paso por base de datos');
-      this.router.navigate(['/menu']);
       return;
     }
 
+    
     this.sqlite.create({
       name: 'usuarios.db',
       location: 'default'
@@ -63,7 +56,11 @@ export class HomePage {
           if (data.rows.length > 0) {
             // Las credenciales son válidas, redirige a la página /menu
             this.sharedService.setUsername(usuario);
-            this.router.navigate(['/menu']);
+            if (this.segmentValue === 'nivel 1') {
+              this.router.navigate(['/menu-profesor']);
+            } else {
+              this.router.navigate(['/menu']);
+            }
           } else {
             // Las credenciales son incorrectas, muestra un mensaje de error
             this.mostrarMensaje('Usuario o contraseña incorrectos.');
