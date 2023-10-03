@@ -13,15 +13,14 @@ import { SegmentChangeEventDetail } from '@ionic/core';
 })
 export class HomePage {
 
-  segmentValue: string = 'profesor'; // Valor predeterminado para el segmento
-  toggleValue: boolean = false; // Valor predeterminado para el toggle
+  segmentValue: string = 'nivel 1';
 
   segmentChanged() {
     // Puedes realizar acciones adicionales aquí según el segmento seleccionado.
     console.log('Segment changed to:', this.segmentValue);
 
     // Redirige al usuario según la selección del toggle
-    if (this.segmentValue === 'profesor') {
+    if (this.segmentValue === 'nivel 1') {
       this.router.navigate(['/menuProfesor']);
     } else {
       this.router.navigate(['/menuAlumno']);
