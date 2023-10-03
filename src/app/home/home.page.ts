@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
 import { SQLite, SQLiteObject} from '@awesome-cordova-plugins/sqlite/ngx';
 
+import { SegmentChangeEventDetail } from '@ionic/core';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -11,6 +13,20 @@ import { SQLite, SQLiteObject} from '@awesome-cordova-plugins/sqlite/ngx';
 })
 export class HomePage {
 
+  segmentValue: string = 'profesor'; // Valor predeterminado para el segmento
+  toggleValue: boolean = false; // Valor predeterminado para el toggle
+
+  segmentChanged() {
+    // Puedes realizar acciones adicionales aquí según el segmento seleccionado.
+    console.log('Segment changed to:', this.segmentValue);
+
+    // Redirige al usuario según la selección del toggle
+    if (this.segmentValue === 'profesor') {
+      this.router.navigate(['/menuProfesor']);
+    } else {
+      this.router.navigate(['/menuAlumno']);
+    }
+  }
   constructor(
     private router: Router,
     public toastController: ToastController,
@@ -33,6 +49,8 @@ export class HomePage {
 
     if (!usuario || !contrasena) {
       this.mostrarMensaje('Los campos no pueden estar vacíos.');
+      this.mostrarMensaje('No paso por base de datos');
+      this.router.navigate(['/menu']);
       return;
     }
 

@@ -28,7 +28,7 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(() => {
       this.createDatabase();
-      this.agregarCredencial('Cam', '12345');
+      this.agregarCredencial('Cam', '12345','Nivel 0');
     });
   }
 
@@ -43,20 +43,21 @@ export class AppComponent {
         CREATE TABLE IF NOT EXISTS credenciales (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           usuario TEXT,
-          contrasena TEXT
+          contrasena TEXT,
+          nivel TEXT
         )`, [])
         .then(() => console.log('Tabla de credenciales creada'))
         .catch(error => console.error('Error al crear la tabla de credenciales', error));
     })
     .catch(error => console.error('Error al abrir la base de datos SQLite', error));
   }
-  agregarCredencial(usuario: string, contrasena: string) {
+  agregarCredencial(usuario: string, contrasena: string, nivel: string) {
     this.sqlite.create({
       name: 'usuarios.db',
       location: 'default'
     })
     .then((db: SQLiteObject) => {
-      db.executeSql('INSERT INTO credenciales (usuario, contrasena) VALUES (?, ?)', [usuario, contrasena])
+      db.executeSql('INSERT INTO credenciales (usuario, contrasena, nivel) VALUES (?, ?, ?)', [usuario, contrasena, nivel])
         .then(() => {
           console.log('Credencial agregada con éxito.');
           this.mostrarMensaje('Credenciales agregadas con exito');
