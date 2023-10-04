@@ -30,6 +30,11 @@ ion-toolbar {
   animation: 2.5s cubic-bezier(0.25, 1, 0.3, 1) circle-in-center both;
 }
 
+#container-segment{
+  width: 70%;
+  height: auto;
+}
+
 label-floating {
   color: white;
 }
@@ -59,9 +64,20 @@ ion-button {
   --background: #0069aa;
 }
 
-.selected-toggle ion-toggle {
-  --ion-color-checked: black;    // Color del toggle cuando está seleccionado
-  --ion-color-unchecked: blue;   // Color del toggle cuando no está seleccionado
+ion-segment {
+  border-radius: 50px;
+  position: absolute;
+  top: 20px;
+  width: auto;
+  ion-segment-button[value="nivel 1"] {
+    color: #000;
+    background-color: #0069aa;
+  }
+
+  ion-segment-button[value="nivel 2"] {
+    color: #0069aa;
+    background-color: #3498db;
+  }
 }
 
 // Animaciones //

@@ -6,20 +6,22 @@
 
 <ion-content [fullscreen]="true">
   <div class="circle"></div>
-  <ion-segment [(ngModel)]="segmentValue" >
-    <ion-segment-button value="nivel 1">
-      Profesor
-    </ion-segment-button>
-    <ion-segment-button value="nivel 2">
-      Alumno
-    </ion-segment-button>
-  </ion-segment>
+
   
   
   
 
   
   <div id="container" class="cssanimation leFadeIn sequence">
+    <ion-segment id="container-segment" [(ngModel)]="segmentValue" >
+      <ion-segment-button value="nivel 1">
+        Profesor
+      </ion-segment-button>
+      <ion-segment-button value="nivel 2">
+        Alumno
+      </ion-segment-button>
+    </ion-segment>
+    
     <ion-img src="../../assets/Screenshot 2023-08-16 210220.png"/>
     <ion-item>
       <ion-label position="floating" type="email">Nombre de Usuario</ion-label>

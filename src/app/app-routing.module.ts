@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { PerfilComponent } from './menu/perfil/perfil.component';
 import { MiCuentaComponent } from './menu/mi-cuenta/mi-cuenta.component';
 import { AsignaturasComponent } from './menu/asignaturas/asignaturas.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -26,6 +27,14 @@ const routes: Routes = [
     component: AsignaturasComponent
   },
   /* Not Found */
+  {
+    path: 'not-found',
+    component: NotFoundComponent, 
+  },
+  {
+    path: '**', 
+    redirectTo: 'not-found',
+  },
 ];
 
 
