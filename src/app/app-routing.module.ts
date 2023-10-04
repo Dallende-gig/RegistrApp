@@ -26,10 +26,6 @@ const routes: Routes = [
     component: AsignaturasComponent
   },
   /* Not Found */
-  {
-    path: '**', 
-    redirectTo: 'not-found',
-  }
 ];
 
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Platform, ToastController } from '@ionic/angular';
 import { SQLite, SQLiteObject } from '@awesome-cordova-plugins/sqlite/ngx';
+import { retry } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -28,8 +29,12 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(() => {
       this.createDatabase();
-      this.agregarCredencial('Cam', '12345');
+
     });
+    
+    // this.agregarCredencial('Cam', '12345');
+    // this.agregarCredencial('Diego', '12345');
+    // retry(2);
   }
 
   createDatabase() {
@@ -59,12 +64,9 @@ export class AppComponent {
       db.executeSql('INSERT INTO credenciales (usuario, contrasena) VALUES (?, ?)', [usuario, contrasena])
         .then(() => {
           console.log('Credencial agregada con éxito.');
-          this.mostrarMensaje('Credenciales agregadas con exito');
         })
         .catch(error => console.error('Error al agregar la credencial', error));
-        this.mostrarMensaje('Error al agregar la credencial')
     })
     .catch(error => console.error('Error al abrir la base de datos SQLite', error));
-    this.mostrarMensaje('Error al abrir la base de datos SQLite')
   }
 }

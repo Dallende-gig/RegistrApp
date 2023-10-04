@@ -13,13 +13,6 @@ import { SegmentChangeEventDetail } from '@ionic/core';
 })
 export class HomePage {
   segmentValue:  string = 'nivel 1';
-
-
-  segmentChanged() {
-    // Puedes realizar acciones adicionales aquí según el segmento seleccionado.
-    // Redirige al usuario según la selección del toggle
-
-  }
   constructor(
     private router: Router,
     public toastController: ToastController,
