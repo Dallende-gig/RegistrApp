@@ -79,17 +79,11 @@ ion-segment {
 
 .segment-button{
   color: #fff;
-  
   width: auto;
   --background:#3498db;
   --background-checked:#353434;
   --color-hover:#353434;
   --color-checked:#3498db;
-  
-
-}
-.segment-button[value="alumno"]{
-  --color-disabled:#e614db;
 }
 
 
