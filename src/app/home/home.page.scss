@@ -1,40 +1,10 @@
 * {
-  --background: aliceblue;
-}
-#Header {
-  text-align: center;
-  box-shadow: none;
+
 }
 ion-toolbar {
   --background: transparent;
-  color: #000;
+  color: #fff;
 }
-
-.circle {
-  width: 400px;
-  height: 400px;
-  background-color: #3498db;
-  position: absolute;
-  top: -224px;
-  left: -179px;
-  transform: rotate(50deg);
-}
-
-#container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 70%;
-  background-color: transparent;
-  animation: 2.5s cubic-bezier(0.25, 1, 0.3, 1) circle-in-center both;
-}
-
-#container-segment{
-  width: 70%;
-  height: auto;
-}
-
 label-floating {
   color: white;
 }
@@ -50,6 +20,7 @@ ion-item {
   --background: #3498db;
 }
 
+
 a {
   cursor: pointer;
 }
@@ -62,22 +33,74 @@ ion-img {
 
 ion-button {
   --background: #0069aa;
+  &:hover{
+    --background:#fff;
+    color: #0069aa;
+  }
 }
 
 ion-segment {
   border-radius: 50px;
   position: absolute;
-  top: 20px;
   width: auto;
-  ion-segment-button[value="nivel 1"] {
-    color: #000;
-    background-color: #0069aa;
-  }
+}
 
-  ion-segment-button[value="nivel 2"] {
-    color: #0069aa;
-    background-color: #3498db;
-  }
+
+/*ID*/
+#body{
+  --ion-background-color:#fff;
+}
+#Header {
+  text-align: center;
+  box-shadow: none;
+}
+
+
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70%;
+  background-color: transparent;
+  animation: 2.5s cubic-bezier(0.25, 1, 0.3, 1) circle-in-center both;
+}
+
+#contain{
+  display:flex ;
+  justify-content: center;
+}
+#container-segment{
+  width: 70%;
+  height: auto;
+}
+
+/*Class*/
+
+.segment-button{
+  color: #fff;
+  
+  width: auto;
+  --background:#3498db;
+  --background-checked:#353434;
+  --color-hover:#353434;
+  --color-checked:#3498db;
+  
+
+}
+.segment-button[value="alumno"]{
+  --color-disabled:#e614db;
+}
+
+
+.circle {
+  width: 103%;
+  height: 122%;
+  background-color: #3498db;
+  position: absolute;
+  top: -50%;
+  left: -23%;
+  transform: rotate(50deg);
 }
 
 // Animaciones //
