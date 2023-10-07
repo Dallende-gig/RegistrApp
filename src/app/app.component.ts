@@ -29,12 +29,10 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(() => {
       this.createDatabase();
-
     });
-    
-    // this.agregarCredencial('Cam', '12345');
-    // this.agregarCredencial('Diego', '12345');
-    // retry(2);
+    this.agregarCredencial('Cam', '12345');
+    this.agregarCredencial('Diego', '12345');
+    retry(2);
   }
 
   createDatabase() {

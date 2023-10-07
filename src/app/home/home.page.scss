@@ -5,13 +5,11 @@ ion-toolbar {
   --background: transparent;
   color: #fff;
 }
-label-floating {
-  color: white;
-}
 
 ion-input {
   width: 100%;
   --background: transparent;
+  --highlight-color-focused:#transparent;
 }
 
 ion-item {
@@ -64,6 +62,7 @@ ion-segment {
   height: 70%;
   background-color: transparent;
   animation: 2.5s cubic-bezier(0.25, 1, 0.3, 1) circle-in-center both;
+  --background-activated:#fff;
 }
 
 #contain{
@@ -85,7 +84,6 @@ ion-segment {
   --color-hover:#353434;
   --color-checked:#3498db;
 }
-
 
 .circle {
   width: 103%;

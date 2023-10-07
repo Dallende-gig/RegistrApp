@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
-import { SQLite, SQLiteObject} from '@awesome-cordova-plugins/sqlite/ngx';
-
-import { SegmentChangeEventDetail } from '@ionic/core';
+import { SQLite, SQLiteObject } from '@awesome-cordova-plugins/sqlite/ngx';
+import { ServiceGuardService } from '../../services/loginGuard/service-guard.service';
 
 @Component({
   selector: 'app-home',
@@ -12,14 +11,15 @@ import { SegmentChangeEventDetail } from '@ionic/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  segmentValue:  string = 'nivel 1';
+  segmentValue: string = 'profesor';
   constructor(
     private router: Router,
     public toastController: ToastController,
     private sharedService: SharedService,
-    private sqlite: SQLite
+    private sqlite: SQLite,
+    private serviceGuard: ServiceGuardService
   ) {}
-  
+
   async mostrarMensaje(mensaje: string) {
     const toast = await this.toastController.create({
       message: mensaje,
@@ -38,7 +38,6 @@ export class HomePage {
       return;
     }
 
-    
     this.sqlite.create({
       name: 'usuarios.db',
       location: 'default'
@@ -49,11 +48,14 @@ export class HomePage {
           if (data.rows.length > 0) {
             // Las credenciales son válidas, redirige a la página /menu
             this.sharedService.setUsername(usuario);
-            if (this.segmentValue === 'nivel 1') {
+            if (this.segmentValue === 'profesor') {
               this.router.navigate(['/menu-profesor']);
             } else {
               this.router.navigate(['/menu']);
             }
+
+            // Marcar que el usuario ha pasado por el login
+            this.serviceGuard.setPassedLogin(true);
           } else {
             // Las credenciales son incorrectas, muestra un mensaje de error
             this.mostrarMensaje('Usuario o contraseña incorrectos.');
@@ -70,9 +72,6 @@ export class HomePage {
     });
   }
 
-
-  
-
   navigateToMenu() {
     this.router.navigate(['/menu']); // Navigate to the "Menu" page
   }
@@ -80,5 +79,4 @@ export class HomePage {
   navigateToForgot() {
     this.router.navigate(['/forgot-password']); // Navigate to the "Forgot" page
   }
-
 }
