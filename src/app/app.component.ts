@@ -24,8 +24,8 @@ export class AppComponent {
       });
     });
     this.sqliteService.agregarCredencial('Cam','12345');
-    this.sqliteService.agregarCredencial('Diego','12345');
-    this.sqliteService.agregarCredencial('Nicolas','12345');
+    this.sqliteService.agregarCredencial('Diego','123456');
+    this.sqliteService.agregarCredencial('Nicolas','1234567');
     retry(2);
   }
 }
