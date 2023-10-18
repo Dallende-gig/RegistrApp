@@ -7,7 +7,7 @@ import { ToastController } from '@ionic/angular';
 export class MensajeService {
   constructor(private toastController: ToastController) {}
 
-  async mostrarMensaje(mensaje: string, duration: number = 2000,position: 'top' | 'bottom' | 'middle' = 'top'
+async mostrarMensaje(mensaje: string, duration: number = 2000,position: 'top' | 'bottom' | 'middle' = 'top'
   ) {
     const toast = await this.toastController.create({
       message: mensaje,
@@ -17,3 +17,5 @@ export class MensajeService {
     toast.present();
   }
 }
+
+

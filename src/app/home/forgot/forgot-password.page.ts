@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { AlertServiceService } from 'src/services/alertService/alert-service.service';
 import axios from 'axios';
 
 @Component({
@@ -13,6 +14,7 @@ export class ForgotPasswordPage implements OnInit {
   constructor(
     private router: Router,
     private alertController: AlertController,
+    private alertService: AlertServiceService
   ) { }
 
   email: string = ''; 
@@ -24,32 +26,20 @@ export class ForgotPasswordPage implements OnInit {
   //func reset password
   async resetPassword(email: string) {
     try {
-      const response = await axios.get(`http://localhost:3000/api/forgotpassword/${email}`);
+      const response = await axios.get(`http://192.168.1.153:3000/api/forgotpassword/${email}`);
       if (response.data.exists) {
-        const alert = await this.alertController.create({
-          header: 'Usuario encontrado',
-          message: 'Se enviará un correo para restablecer la contraseña.',
-          buttons: [{
-            text: 'OK',
-            handler: () => {
-              this.navigateToHome();  // Llama a navigateToHome cuando se hace clic en "OK"
-            }
-          }]
-        });
-        await alert.present();
+        this.alertService.mostrarAlertaConOK('Usuario encontrado',  'Mensaje personalizado para esta página',
+          () => {
+            this.navigateToHome(); // Llama a la función navigateToHome cuando se hace clic en "OK"
+          }
+        );
       } else {
         // El usuario no existe
-        const alert = await this.alertController.create({
-          header: 'Error',
-          message: 'Favor ponte en contacto con tu administrador.',
-          buttons: [{
-            text: 'OK',
-            handler: () => {
-              this.navigateToHome();  // Llama a navigateToHome cuando se hace clic en "OK"
-            }
-          }]
-        });
-        await alert.present();
+        this.alertService.mostrarAlertaConOK( 'Error', 'Favor ponte en contacto con tu administrador.',
+          () => {
+            this.navigateToHome(); // Llama a la función navigateToHome cuando se hace clic en "OK"
+          }
+        );
       }
     } catch (error){
       console.error('Error al obtener datos del API:', error);
