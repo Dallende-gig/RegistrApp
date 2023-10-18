@@ -11,11 +11,12 @@ export class AlertServiceService {
   async mostrarAlertaConOK(titulo: string, mensaje: string, okCallback: () => void) {
     const alert = await this.alertController.create({
       header: titulo,  // Utiliza el título personalizado
-      message: mensaje,
+      message: mensaje, // Utiliza el mensaje personalizado
       buttons: [{
         text: 'OK',
         handler: () => {
-          okCallback();  // Llama a la función de callback proporcionada cuando se hace clic en "OK"
+          okCallback();
+          // Llama a la funcion de callback proporcionada cuando se hace clic en "OK"
         }
       }]
     });
