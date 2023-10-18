@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import { UserService } from 'src/services/user/user.service';
+import axios from 'axios';
 
 @Component({
   selector: 'app-forgot-password',
@@ -12,7 +12,6 @@ export class ForgotPasswordPage implements OnInit {
 
   constructor(
     private router: Router,
-    private userService: UserService,
     private alertController: AlertController,
   ) { }
 
@@ -24,33 +23,36 @@ export class ForgotPasswordPage implements OnInit {
   }
   //func reset password
   async resetPassword(email: string) {
-    const user = this.userService.getUserByEmail(email);
-  
-    if (user) {
-      const alert = await this.alertController.create({
-        header: 'Usuario encontrado',
-        message: 'Se enviará un correo para restablecer la contraseña.',
-        buttons: [{
-          text: 'OK',
-          handler: () => {
-            this.navigateToHome();  // Llama a navigateToHome cuando se hace clic en "OK"
-          }
-        }]
-      });
-      await alert.present();
-    } else {
-      // El usuario no existe
-      const alert = await this.alertController.create({
-        header: 'Error',
-        message: 'Favor ponte en contacto con tu administrador.',
-        buttons: [{
-          text: 'OK',
-          handler: () => {
-            this.navigateToHome();  // Llama a navigateToHome cuando se hace clic en "OK"
-          }
-        }]
-      });
-      await alert.present();
+    try {
+      const response = await axios.get(`http://localhost:3000/api/forgotpassword/${email}`);
+      if (response.data.exists) {
+        const alert = await this.alertController.create({
+          header: 'Usuario encontrado',
+          message: 'Se enviará un correo para restablecer la contraseña.',
+          buttons: [{
+            text: 'OK',
+            handler: () => {
+              this.navigateToHome();  // Llama a navigateToHome cuando se hace clic en "OK"
+            }
+          }]
+        });
+        await alert.present();
+      } else {
+        // El usuario no existe
+        const alert = await this.alertController.create({
+          header: 'Error',
+          message: 'Favor ponte en contacto con tu administrador.',
+          buttons: [{
+            text: 'OK',
+            handler: () => {
+              this.navigateToHome();  // Llama a navigateToHome cuando se hace clic en "OK"
+            }
+          }]
+        });
+        await alert.present();
+      }
+    } catch (error){
+      console.error('Error al obtener datos del API:', error);
     }
   }
   
