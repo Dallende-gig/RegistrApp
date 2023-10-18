@@ -11,7 +11,6 @@ export class SQLiteService {
     private sqlite: SQLite,
     private mensajeService: MensajeService,) { }
 
-
   verificarCredenciales(usuario: string, contrasena: string): Promise<boolean> {
     return this.createDatabase().then((db: SQLiteObject) => {
       return db.executeSql('SELECT * FROM credenciales WHERE usuario = ? AND contrasena = ?', [usuario, contrasena])
@@ -30,9 +29,10 @@ export class SQLiteService {
       return false; // Devuelve false en caso de error
     });
   }
+
   createDatabase() {
     return this.sqlite.create({
-      name: 'usuarios.db',
+      name: 'RegistrApp.db',
       location: 'default'
     });
   }
