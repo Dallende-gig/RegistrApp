@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import { UserService } from 'src/app/user/user.service';
+import { UserService } from 'src/services/user/user.service';
 
 @Component({
   selector: 'app-forgot-password',
