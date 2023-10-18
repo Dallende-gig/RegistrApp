@@ -19,7 +19,7 @@ const routes: Routes = [
   },
 
   // Pagina Has olvidado tu contraseña
-  { path: 'forgot-password',canActivate: [GuardGuard],loadChildren: () => import('./home/forgot/forgot-password.module').then( m => m.ForgotPasswordPageModule)
+  { path: 'forgot-password',loadChildren: () => import('./home/forgot/forgot-password.module').then( m => m.ForgotPasswordPageModule)
   },
 
   /* Componentes */
