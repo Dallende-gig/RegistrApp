@@ -39,10 +39,13 @@ export class MenuPage implements OnInit {
 
   //Manejo de direcciones a traves de irA //
   irA(destino: string) {
-    if (destino === 'cuenta' || destino === 'perfil' || destino === 'asignaturas') {
-      this.router.navigate([`/menu/${destino}`]);
-  } if( destino === 'menu') {
-      this.router.navigate([`/menu`]);
+    const rutasValidas = ['cuenta', 'perfil', 'asignaturas', 'menu'];
+
+    if (rutasValidas.includes(destino)) {
+      this.router.navigate([destino]);
+    } else {
+      // Puedes redirigir a una página de error o realizar alguna otra acción aquí
+      this.router.navigate(['pagina-de-error']);
     }
   }
 

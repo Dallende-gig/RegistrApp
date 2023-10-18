@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { MenuPage } from './menu.page';
+import { MiCuentaComponent } from './mi-cuenta/mi-cuenta.component';
+import { AsignaturasComponent } from './asignaturas/asignaturas.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 const routes: Routes = [
   {
@@ -9,9 +11,9 @@ const routes: Routes = [
     component: MenuPage,
     children: [
       { path: 'menu', loadChildren: () => import('../menu/menu.module').then(m => m.MenuPageModule) },
-      { path: 'cuenta', loadChildren: () => import('../pages/cuenta/cuenta.module').then(m => m.CuentaPageModule) },
-      { path: 'perfil', loadChildren: () => import('../pages/perfil/perfil.module').then(m => m.PerfilPageModule) },
-      { path: 'asignaturas', loadChildren: () => import('../pages/asignaturas/asignaturas.module').then(m => m.AsignaturasPageModule) },
+      { path: 'cuenta', component: MiCuentaComponent},
+      { path: 'perfil', component: AsignaturasComponent},
+      { path: 'asignaturas', component: PerfilComponent},
     ]
   }
 ];
