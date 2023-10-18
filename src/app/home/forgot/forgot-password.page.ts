@@ -26,7 +26,7 @@ export class ForgotPasswordPage implements OnInit {
   //func reset password
   async resetPassword(email: string) {
     try {
-      const response = await axios.get(`http://192.168.1.153:3000/api/forgotpassword/${email}`);
+      const response = await axios.get(`http://localhost:3000/api/forgotpassword/${email}`);
       if (response.data.exists) {
         this.alertService.mostrarAlertaConOK('Usuario encontrado',  'Mensaje personalizado para esta página',
           () => {
