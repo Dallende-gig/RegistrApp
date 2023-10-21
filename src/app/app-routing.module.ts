@@ -5,6 +5,8 @@ import { MiCuentaComponent } from './menu/mi-cuenta/mi-cuenta.component';
 import { AsignaturasComponent } from './menu/asignaturas/asignaturas.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { GuardGuard } from './home/guard/guard.guard';
+import { PerfilProfesorComponent } from './menu-profesor/perfil-profesor/perfil-profesor.component';
+import { AsignaturasImpartidasComponent } from './menu-profesor/asignaturas-impartidas/asignaturas-impartidas.component';
 
 const routes: Routes = [
   // Pagina Login
@@ -28,13 +30,19 @@ const routes: Routes = [
     component: PerfilComponent,
     canActivate: [GuardGuard]
   },
-
+  {
+    path:'perfil-profesor',
+    component: PerfilProfesorComponent
+  },
   {
     path: 'cuenta',
     component: MiCuentaComponent,
     canActivate: [GuardGuard]
   },
-
+  {
+    path: 'asignaturas-impartidas',
+    component: AsignaturasImpartidasComponent
+  },
   {
     path: 'asignaturas',
     component: AsignaturasComponent,
