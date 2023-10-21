@@ -27,22 +27,6 @@ export class ForgotPasswordPage implements OnInit {
   //func reset password
   async resetPassword(email: string) {
     try {
-<<<<<<< HEAD
-      const response = await axios.get(`http://192.168.1.114:3000/api/forgotpassword/${email}`);
-      if (response.data.exists) {
-        this.alertService.mostrarAlertaConOK('Usuario encontrado',  'Mensaje personalizado para esta página',
-          () => {
-            this.navigateToHome(); // Llama a la función navigateToHome cuando se hace clic en "OK"
-          }
-        );
-      } else {
-        // El usuario no existe
-        this.alertService.mostrarAlertaConOK( 'Error', 'Favor ponte en contacto con tu administrador.',
-          () => {
-            this.navigateToHome(); // Llama a la función navigateToHome cuando se hace clic en "OK"
-          }
-        );
-=======
       const apiKey = 'f6bb1a7bf37eac28cd3cf2f1c38c8f99cb687de9'; 
       const emailToVerify = email.toLowerCase(); 
 
@@ -53,7 +37,6 @@ export class ForgotPasswordPage implements OnInit {
 
       if (verificationResult.result === 'valid') {
         console.log(`El correo electrónico ${email} es válido.`);
->>>>>>> f164312f60aee63b832be6ea52463b7494cdd9b5
       }
         // Ahora, compara el correo con los datos en tu JSON
         const users = [
