@@ -1,22 +1,29 @@
-<ion-header [translucent]="true" id="Header"> 
+<ion-header [translucent]="true" id="Header">
   <ion-toolbar>
-    <ion-title>LOGIN</ion-title>
+    <ion-title>Bienvenidos</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content id="body" [fullscreen]="true">
   <div class="circle"></div>
   <div id="container" class="cssanimation leFadeIn sequence">
-    <ion-img src="../../assets/Screenshot 2023-08-16 210220.png"/>
+    <ion-img src="../../assets/Screenshot 2023-08-16 210220.png" />
     <ion-item>
-      <ion-label position="floating" type="email">Nombre de Usuario</ion-label>
+      <ion-label  position="floating" type="email" color="white">Nombre de Usuario</ion-label>
       <ion-input name="User" type="text"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Contraseña</ion-label>
+      <ion-label position="floating" color="white">Contraseña</ion-label>
       <ion-input name="Pass" type="password"></ion-input>
     </ion-item>
     <ion-button mat-raised-button (click)="validarYLogin()">Login</ion-button>
+    
     <a (click)="navigateToForgot()">Restablecer Contraseña</a>
+  </div>
+  <div id="contain">
+    <ion-segment id="container-segment" [(ngModel)]="segmentValue">
+      <ion-segment-button class="segment-button" value="profesor"> Profesor </ion-segment-button>
+      <ion-segment-button class="segment-button" value="alumno"> Alumno </ion-segment-button>
+    </ion-segment>
   </div>
 </ion-content>

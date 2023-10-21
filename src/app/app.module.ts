@@ -4,7 +4,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { SharedService } from '../services/shared.service'; // Reemplaza esto con la ruta correcta
+import { SQLite } from '@awesome-cordova-plugins/sqlite/ngx';
 
 
 
@@ -12,9 +12,7 @@ import { SharedService } from '../services/shared.service'; // Reemplaza esto co
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
   providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    SharedService // Agrega el SharedService a los providers
-  ],
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, SQLite],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
