@@ -1,4 +1,13 @@
 
+
+:root{
+--color1 : #1693a5 ;
+--color2 : #45b5c4 ;
+--color3 : #7ececa ;
+--color4 : #a0ded6 ;
+--color5 : #c7ede8 ;
+
+}
 ion-toolbar {
   --background: transparent;
   color: #fff;
@@ -37,6 +46,7 @@ ion-button {
 ion-segment-button{
   --border-radius:50px ;
 }
+
 #body{
   --background: url(../../assets/fondoapp.jpg) no-repeat  center center;
   background-size: cover;
@@ -49,7 +59,6 @@ ion-segment-button{
     backdrop-filter: blur(50px) brightness(50%);
   }
 }
-
 
 #Header {
   text-align: center;
@@ -64,7 +73,7 @@ ion-segment-button{
   align-items: center;
   height: 70%;
   background-color: transparent;
-  animation: 2.5s cubic-bezier(0.25, 1, 0.3, 1) circle-in-center both;
+  animation: 12s cubic-bezier(0.25, 1, 0.3, 1) circle-in-center both;
   --background-activated:#fff;
 }
 
@@ -89,7 +98,7 @@ ion-segment-button{
   color: #fff;
   width: auto;
   --background:#3498db;
-  --background-checked:#353434;
+  --background-checked: #353434;
   --color-hover:#353434;
   --color-checked:#3498db;
 }
