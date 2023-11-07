@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content id="body" [fullscreen]="true">
-  <div class="circle"></div>
+  <div class="filter-body"></div>
   <div id="container" class="cssanimation leFadeIn sequence">
     <ion-img src="../../assets/Screenshot 2023-08-16 210220.png" />
     <ion-item>
@@ -17,8 +17,6 @@
       <ion-input name="Pass" type="password"></ion-input>
     </ion-item>
     <ion-button mat-raised-button (click)="validarYLogin()">Login</ion-button>
-    
-    <a (click)="navigateToForgot()">Restablecer Contraseña</a>
   </div>
   <div id="contain">
     <ion-segment id="container-segment" [(ngModel)]="segmentValue">
@@ -27,3 +25,9 @@
     </ion-segment>
   </div>
 </ion-content>
+
+<ion-footer id="footer">
+  <div>
+    <a (click)="navigateToForgot()">Restablecer Contraseña</a>
+  </div>
+</ion-footer>

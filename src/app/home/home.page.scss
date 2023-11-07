@@ -1,6 +1,4 @@
-* {
 
-}
 ion-toolbar {
   --background: transparent;
   color: #fff;
@@ -9,14 +7,13 @@ ion-toolbar {
 ion-input {
   width: 100%;
   --background: transparent;
-  --highlight-color-focused:#transparent;
 }
 
 ion-item {
-  border-radius: 50px;
   margin-bottom: 1%;
-  --background: #3498db;
+  --background: transparent;
 }
+
 
 
 a {
@@ -37,17 +34,23 @@ ion-button {
   }
 }
 
-ion-segment {
-  border-radius: 50px;
-  position: absolute;
-  width: auto;
+ion-segment-button{
+  --border-radius:50px ;
 }
-
-
-/*ID*/
 #body{
-  --ion-background-color:#fff;
+  --background: url(../../assets/fondoapp.jpg) no-repeat  center center;
+  background-size: cover;
+  & .filter-body{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px) brightness(50%);
+  }
 }
+
+
 #Header {
   text-align: center;
   box-shadow: none;
@@ -72,6 +75,12 @@ ion-segment {
 #container-segment{
   width: 70%;
   height: auto;
+  --background:transparent;
+}
+
+
+#footer{
+  text-align: center;
 }
 
 /*Class*/
@@ -85,15 +94,8 @@ ion-segment {
   --color-checked:#3498db;
 }
 
-.circle {
-  width: 103%;
-  height: 122%;
-  background-color: #3498db;
-  position: absolute;
-  top: -50%;
-  left: -23%;
-  transform: rotate(50deg);
-}
+
+
 
 // Animaciones //
 
