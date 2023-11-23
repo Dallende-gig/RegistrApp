@@ -9,7 +9,7 @@ export class SQLiteService {
 
   constructor(
     private sqlite: SQLite,
-    private mensajeService: MensajeService,) { }
+    private mensajeService: MensajeService) { }
 
   verificarCredenciales(usuario: string, contrasena: string): Promise<boolean> {
     return this.createDatabase().then((db: SQLiteObject) => {
