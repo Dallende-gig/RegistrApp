@@ -7,28 +7,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-menu side="start" contentId="main-content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-icon (click)="cerrarMenu()" slot="start" name="arrow-back" id="arrow-back"></ion-icon>
-      <ion-label>Menu</ion-label>
-    </ion-toolbar>
-  </ion-header>
+<app-main-menu></app-main-menu>
 
-  <ion-content>
-    <ion-list>
-      <ion-menu-toggle *ngFor="let item of menuItems">
-        <ion-item (click)="irA(item.destination)">
-          <ion-icon slot="start" [name]="item.icon"></ion-icon>
-          <ion-label>{{ item.label }}</ion-label>
-        </ion-item>
-      </ion-menu-toggle>
-    </ion-list>
-  </ion-content>
-</ion-menu>
 
 <ion-content id="Body">
   <a>Esta es la pagina principal</a>
 </ion-content>
 
-<ion-router-outlet id="main-content"></ion-router-outlet>

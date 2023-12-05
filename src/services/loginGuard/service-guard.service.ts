@@ -15,4 +15,9 @@ export class ServiceGuardService {
   setPassedLogin(passed: boolean) {
     this.hasPassedLoginFlag = passed;
   }
+
+  setOutLogin (){
+    this.hasPassedLoginFlag=false;
+  }
+
 }

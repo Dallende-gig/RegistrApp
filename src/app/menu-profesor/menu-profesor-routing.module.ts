@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { MenuProfesorPage } from './menu-profesor.page';
-import { PerfilProfesorComponent } from './perfil-profesor/perfil-profesor.component';
-import { AsignaturasImpartidasComponent } from './asignaturas-impartidas/asignaturas-impartidas.component';
+import { PerfilProfesorComponent } from '../../components/Profesor/perfil-profesor/perfil-profesor.component';
+import { AsignaturasImpartidasComponent } from '../../components/Profesor/asignaturas-impartidas/asignaturas-impartidas.component';
+import { ComponentsModule } from 'src/components/components.module.ts.module';
 
 const routes: Routes = [
   {
@@ -21,7 +22,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes),ComponentsModule],
   exports: [RouterModule],
 })
 export class MenuProfesorPageRoutingModule {}
