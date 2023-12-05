@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SharedService } from '../../services/shared.service';
 
 
 @Component({
@@ -11,17 +10,14 @@ import { SharedService } from '../../services/shared.service';
 
 // Declaraciones para las opciones del menu //
 export class MenuPage implements OnInit {
-  username: string | null = null;
 
 
   constructor(
     private router: Router,
-    private sharedService: SharedService,
   ) {}
 
   //Obtencion de Nombre de usuario para mostrar en el mensaje de bienvenida //
   ngOnInit() {
-    this.username = this.sharedService.getUsername();
   }
 
 
