@@ -43,9 +43,6 @@ ion-button {
   }
 }
 
-ion-segment-button{
-  --border-radius:50px ;
-}
 
 #body{
   --background: url(../../assets/fondoapp.jpg) no-repeat  center center;
@@ -71,36 +68,17 @@ ion-segment-button{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 70%;
+  height: 100%;
   background-color: transparent;
   animation: 12s cubic-bezier(0.25, 1, 0.3, 1) circle-in-center both;
   --background-activated:#fff;
 }
 
-#contain{
-  display:flex ;
-  justify-content: center;
-}
-#container-segment{
-  width: 70%;
-  height: auto;
-  --background:transparent;
-}
+
 
 
 #footer{
   text-align: center;
-}
-
-/*Class*/
-
-.segment-button{
-  color: #fff;
-  width: auto;
-  --background:#3498db;
-  --background-checked: #353434;
-  --color-hover:#353434;
-  --color-checked:#3498db;
 }
 
 

@@ -1,0 +1,12 @@
+#main-content{
+    --background:transparent;
+  }
+  ion-list {
+    ion-item {
+      --background:aliceblue;
+      ion-label {
+        margin-left: 10px;
+        --background:transparent;
+      }
+    }
+  }

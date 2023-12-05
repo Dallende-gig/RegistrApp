@@ -4,18 +4,9 @@
   margin: 0;
   padding: 0;
 }
-#main-content{
-  --background:transparent;
-}
-ion-list {
-  ion-item {
-    --background:aliceblue;
-    ion-label {
-      margin-left: 10px;
-      --background:transparent;
-    }
-  }
-}
+
+
+
 
 
 #username{
@@ -35,6 +26,19 @@ ion-list {
   height: 20px;
 }
 
+#Mark{
+  margin-left: 2%;
+}
+#container{
+  height: 100%;
+  display: grid;
+  justify-content: center;
+  place-items: center;
+}
+ion-item[id='item-Report'],[id='item-Mark'],[id='Case-Button']{
+  --background:transparent;
+  --border-color:transparent;
+}
 
 // Animaciones Menu//
 @keyframes wipe-in-left {

@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PerfilComponent } from './menu/perfil/perfil.component';
-import { MiCuentaComponent } from './menu/mi-cuenta/mi-cuenta.component';
-import { AsignaturasComponent } from './menu/asignaturas/asignaturas.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { PerfilComponent } from '../components/Alumno/perfil/perfil.component';
+import { MiCuentaComponent } from '../components/Alumno/mi-cuenta/mi-cuenta.component';
+import { AsignaturasComponent } from '../components/Alumno/asignaturas/asignaturas.component';
+import { NotFoundComponent } from '../components/not-found/not-found.component';
 import { GuardGuard } from './home/guard/guard.guard';
-import { PerfilProfesorComponent } from './menu-profesor/perfil-profesor/perfil-profesor.component';
-import { AsignaturasImpartidasComponent } from './menu-profesor/asignaturas-impartidas/asignaturas-impartidas.component';
+import { PerfilProfesorComponent } from '../components/Profesor/perfil-profesor/perfil-profesor.component';
+import { AsignaturasImpartidasComponent } from '../components/Profesor/asignaturas-impartidas/asignaturas-impartidas.component';
+import { ComponentsModule } from 'src/components/components.module.ts.module';
 
 const routes: Routes = [
   // Pagina Login
@@ -32,7 +33,8 @@ const routes: Routes = [
   },
   {
     path:'perfil-profesor',
-    component: PerfilProfesorComponent
+    component: PerfilProfesorComponent, 
+    canActivate: [GuardGuard],
   },
   {
     path: 'cuenta',
@@ -41,12 +43,13 @@ const routes: Routes = [
   },
   {
     path: 'asignaturas-impartidas',
-    component: AsignaturasImpartidasComponent
+    component: AsignaturasImpartidasComponent,
+    canActivate: [GuardGuard]
   },
   {
     path: 'asignaturas',
-    component: AsignaturasComponent,
-    canActivate: [GuardGuard]
+    component: AsignaturasComponent, 
+    canActivate: [GuardGuard],
   },
   
   /* Not Found */
@@ -62,7 +65,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), ComponentsModule],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
