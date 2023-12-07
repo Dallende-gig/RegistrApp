@@ -22,6 +22,7 @@ export class AppComponent {
         this.sqliteService.agregarCredencial('Cam', '12345', '2'); // Usuario de nivel 2 (alumno)
         this.sqliteService.agregarCredencial('Diego', '123456', '1'); // Usuario de nivel 1 (profesor)
         this.sqliteService.agregarCredencial('Nicolas', '1234567', '1'); // Usuario de nivel 1 (profesor)
+        
       });
     });
   }
