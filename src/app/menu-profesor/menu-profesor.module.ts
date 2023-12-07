@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { MenuProfesorPageRoutingModule } from './menu-profesor-routing.module';
 
 import { MenuProfesorPage } from './menu-profesor.page';
-import { MainMenuComponent } from 'src/components/main-menu/main-menu.component';
 import { ComponentsModule } from 'src/components/components.module.ts.module';
 
 @NgModule({
