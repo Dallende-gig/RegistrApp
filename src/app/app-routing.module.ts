@@ -8,6 +8,7 @@ import { GuardGuard } from './home/guard/guard.guard';
 import { PerfilProfesorComponent } from '../components/Profesor/perfil-profesor/perfil-profesor.component';
 import { AsignaturasImpartidasComponent } from '../components/Profesor/asignaturas-impartidas/asignaturas-impartidas.component';
 import { ComponentsModule } from 'src/components/components.module.ts.module';
+import { ChangePasswordPage } from './home/forgot/change-password/change-password.page';
 
 const routes: Routes = [
   // Pagina Login
@@ -24,6 +25,8 @@ const routes: Routes = [
   // Pagina Has olvidado tu contraseña
   { path: 'forgot-password',loadChildren: () => import('./home/forgot/forgot-password.module').then( m => m.ForgotPasswordPageModule)
   },
+  { path: 'change-password', component: ChangePasswordPage },
+  { path: 'change-password/:email', component: ChangePasswordPage },
 
   /* Componentes */
   {
@@ -61,6 +64,11 @@ const routes: Routes = [
     path: '**', 
     redirectTo: 'not-found',
   },
+  {
+    path: 'change-password',
+    loadChildren: () => import('./home/forgot/change-password/change-password.module').then( m => m.ChangePasswordPageModule)
+  },
+
 ];
 
 

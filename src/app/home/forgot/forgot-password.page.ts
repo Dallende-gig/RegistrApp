@@ -48,6 +48,7 @@ export class ForgotPasswordPage implements OnInit {
         if (user) {
           this.sendResetEmail(email);
           this.showSuccessAlert();
+          this.router.navigate(['/change-password', { email: user.email }]);
         } else {
           this.showErrorAlert();
         }
