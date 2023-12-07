@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { AlertServiceService } from 'src/services/alertService/alert-service.service';
 import axios from 'axios';
+import * as emailjs from 'emailjs-com';
+import { EmailService } from 'src/services/EmailService/email-service.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -14,7 +16,8 @@ export class ForgotPasswordPage implements OnInit {
   constructor(
     private router: Router,
     private alertController: AlertController,
-    private alertService: AlertServiceService
+    private alertService: AlertServiceService,
+    private emailService: EmailService
   ) { }
 
 
@@ -26,7 +29,7 @@ export class ForgotPasswordPage implements OnInit {
   }
   //func reset password
   async resetPassword(email: string) {
-    try {
+    try{
       const apiKey = 'f6bb1a7bf37eac28cd3cf2f1c38c8f99cb687de9'; 
       const emailToVerify = email.toLowerCase(); 
 
@@ -38,44 +41,82 @@ export class ForgotPasswordPage implements OnInit {
       if (verificationResult.result === 'valid') {
         console.log(`El correo electrónico ${email} es válido.`);
       }
-        // Ahora, compara el correo con los datos en tu JSON
-        const users = [
-          { username: 'Diego', email: 'di.allende@duocuc.cl', password: '123456' },
-          { username: 'Cam', email: 'al.grumi@duocuc.cl', password: '12345' },
-          { username: 'Nicolas', email: 'ni@profesor.duoc.cl', password: '123456A' }
-        ];
 
-        const matchingUser = users.find(user => user.email === emailToVerify);
-
-        if (matchingUser) {
-          const alert = await this.alertController.create({
-            header: 'Usuario encontrado',
-            message: 'Se enviará un correo para restablecer la contraseña.',
-            buttons: [{
-              text: 'OK',
-              handler: () => {
-                this.navigateToHome();  // Llama a navigateToHome cuando se hace clic en "OK"
-              } 
-            }]
-          });
-          await alert.present();
+        const emailnew = email;
+        const user = this.findUserByEmail(email);
+  
+        if (user) {
+          this.sendResetEmail(email);
+          this.showSuccessAlert();
         } else {
-          // El usuario no existe
-          const alert = await this.alertController.create({
-            header: 'Error',
-            message: 'Favor ponte en contacto con tu administrador.',
-            buttons: [{
-              text: 'OK',
-              handler: () => {
-                this.navigateToHome();  // Llama a navigateToHome cuando se hace clic en "OK"
-              }
-            }]
-          });
-          await alert.present();
+          this.showErrorAlert();
         }
-      }
-    catch (error) {
+    }  
+    catch (error: any) {
       console.error('Error al validar el correo electrónico:', error);
+    }
+  }
+
+  findUserByEmail(email: string) {
+    const users = [
+      { username: 'Diego', email: 'di.allende@duocuc.cl', password: '123456' },
+      { username: 'Cam', email: 'al.grumi@duocuc.cl', password: '12345' },
+      { username: 'Nicolas', email: 'ni@profesor.duoc.cl', password: '123456A' },
+      { username: 'admin', email: 'registrapp4@gmail.com', password: '12212121'}
+    ];
+    return users.find((user) => user.email === email);
+  }
+
+  
+
+  async showSuccessAlert() {
+    const alert = await this.alertController.create({
+      header: 'Usuario encontrado',
+      message: 'Se enviará un correo para restablecer la contraseña.',
+      buttons: [{
+        text: 'OK',
+        handler: () => {
+          this.navigateToHome();
+        }
+      }]
+    });
+
+    await alert.present();
+  }
+
+  async showErrorAlert() {
+    const alert = await this.alertController.create({
+      header: 'Error',
+      message: 'Favor ponte en contacto con tu administrador.',
+      buttons: [{
+        text: 'OK',
+        handler: () => {
+          this.navigateToHome();
+        }
+      }]
+    });
+
+    await alert.present();
+  }
+
+  async sendResetEmail(email: string) {
+    const user = this.findUserByEmail(email);
+  
+    if (user) {
+      const toEmail = email;
+      const username = user.username;
+      const resetLink = 'https://tuaplicacion.com/reset-password'; // Generar un enlace único de reseteo
+  
+      try {
+        const response = await this.emailService.sendResetEmail(toEmail, username, resetLink);
+        console.log('Correo enviado a correo: ',toEmail);
+        console.log('Correo de reseteo enviado con éxito', response);
+
+      } catch (error) {
+        console.error('Error al enviar el correo de reseteo', error);
+      }
+    } else {
+      console.error('Usuario no encontrado para el correo electrónico proporcionado');
     }
   }
   
@@ -86,4 +127,5 @@ export class ForgotPasswordPage implements OnInit {
   ngOnInit() {
   }
 
-}
+} 
+
