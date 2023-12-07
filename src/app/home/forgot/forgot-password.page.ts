@@ -98,6 +98,7 @@ export class ForgotPasswordPage implements OnInit {
 
     await alert.present();
   }
+  
 
   async sendResetEmail(email: string) {
     const user = this.findUserByEmail(email);
